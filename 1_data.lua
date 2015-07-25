@@ -37,11 +37,11 @@ end
 -- get/create dataset
 --
 if opt.full then
-   nbTrainingPatches = 60000
-   nbTestingPatches = 10000
+   trsize = 60000
+   tesize = 10000
 else
-   nbTrainingPatches = 2000
-   nbTestingPatches = 1000
+   trsize = 2000
+   tesize = 1000
    print('<warning> only using 2000 samples to train quickly (use flag -full to use 60000 samples)')
 end
 
@@ -58,50 +58,9 @@ print '==> loading dataset'
 geometry = {32,32}
 
 -- create training set and normalize
-trainData = mnist.loadTrainSet(nbTrainingPatches, geometry)
+trainData = mnist.loadTrainSet(trsize, geometry)
 trainData:normalizeGlobal(mean, std)
 
 -- create test set and normalize
-testData = mnist.loadTestSet(nbTestingPatches, geometry)
+testData = mnist.loadTestSet(tesize, geometry)
 testData:normalizeGlobal(mean, std)
-
-----------------------------------------------------------------------
--- define model to train
--- on the 10-class classification problem
---
-classes = {'1','2','3','4','5','6','7','8','9','10'}
-
-
-
---trainData = {
---   data = loaded.X:transpose(3,4),
---   labels = loaded.y[1],
---   size = function() return trsize end
---}
---
----- Finally we load the test data.
---
---
---loaded = torch.load(test_file,'ascii')
---testData = {
---   data = loaded.X:transpose(3,4),
---   labels = loaded.y[1],
---   size = function() return tesize end
---}
---
-
--- Visualization is quite easy, using itorch.image().
-
---if opt.visualize then
---   if itorch then
---   first256Samples_y = trainData.data[{ {1,256},1 }]
---   first256Samples_u = trainData.data[{ {1,256},2 }]
---   first256Samples_v = trainData.data[{ {1,256},3 }]
---   itorch.image(first256Samples_y)
---   itorch.image(first256Samples_u)
---   itorch.image(first256Samples_v)
---   else
---      print("For visualization, run this script in an itorch notebook")
---   end
---end
---

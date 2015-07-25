@@ -44,7 +44,7 @@ height = 32
 ninputs = nfeats*width*height
 
 -- number of hidden units (for MLP only):
-nhiddens = ninputs / 2
+nhiddens = 300
 
 -- hidden units, filter sizes (for ConvNet only):
 nstates = {64,64,128}
@@ -69,8 +69,8 @@ elseif opt.model == 'mlp' then
    model:add(nn.Reshape(ninputs))
    model:add(nn.Linear(ninputs,nhiddens))
    model:add(nn.Tanh())
-   model:add(nn.Linear(nhiddens,noutputs))
-
+   model:add(nn.Linear(nhiddens,noutputs))   
+   model:add(nn.Tanh())
 elseif opt.model == 'convnet' then
 
    if opt.type == 'cuda' then

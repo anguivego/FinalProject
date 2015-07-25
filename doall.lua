@@ -67,13 +67,14 @@ print '==> executing all'
 dofile '1_data.lua'
 dofile '2_model.lua'
 dofile '3_loss.lua'
-dofile '4_train.lua'
-dofile '5_test.lua'
-
-----------------------------------------------------------------------
-print '==> training!'
-
-while true do
-   train()
-   test()
-end
+--dofile '4_train.lua'
+--dofile '5_test.lua'
+--
+------------------------------------------------------------------------
+--print '==> training!'
+--
+--while true do
+--   train()
+--   test()
+--end
+--

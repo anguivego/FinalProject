@@ -66,19 +66,16 @@ torch.manualSeed(opt.seed)
 print '==> executing all'
 
 dofile '1_data.lua'
-print(trainData)
 dofile '2_model.lua'
-print(trainData)
 dofile '3_loss.lua'
-print(trainData)
 dofile '4_train.lua'
-print(trainData)
 dofile '5_test.lua'
-print(trainData)
 ----------------------------------------------------------------------
 print '==> training!'
-
-while true do
+iterations=1000
+i=0
+while i<iterations do
    train()
    test()
+   i=i+1
 end

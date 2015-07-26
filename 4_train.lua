@@ -158,6 +158,7 @@ function train()
                        for i = 1,#inputs do
                           -- estimate f
                           local output = model:forward(inputs[i])
+                          if output:dim() >1 then output=output[1] end
                           local err = criterion:forward(output, targets[i])
                           f = f + err
 

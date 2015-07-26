@@ -39,6 +39,7 @@ function test()
       local target = testData.labels[t]
 
       -- test sample
+      if input:dim() >1 then input=input[1] end
       local pred = model:forward(input)
       confusion:add(pred, target)
    end

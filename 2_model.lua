@@ -64,13 +64,12 @@ if opt.model == 'linear' then
 
 elseif opt.model == 'mlp' then
 
-   -- Simple 2-layer neural network, with tanh hidden units
+ -- Simple 2-layer neural network, with tanh hidden units
    model = nn.Sequential()
    model:add(nn.Reshape(ninputs))
    model:add(nn.Linear(ninputs,nhiddens))
    model:add(nn.Tanh())
-   model:add(nn.Linear(nhiddens,noutputs))   
-   model:add(nn.Tanh())
+   model:add(nn.Linear(nhiddens,noutputs))
 elseif opt.model == 'convnet' then
 
    if opt.type == 'cuda' then
